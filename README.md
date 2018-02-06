@@ -12,6 +12,12 @@
     + `proxied`：CloudFlare CDN加速
         * `true`：启用
         * `false`：关闭
+- `username`: 邮箱的用户名
+- `password`": 邮箱的密码或授权码
+- `host`": smtp服务器地址
+- `from`": 发送方信息，发信昵称和发信地址
+- `to`": 接收邮件的帐号信息
+
 
 配置示例文件如下：
 
@@ -43,6 +49,19 @@
             "proxied": true
         }
     ],
+    "mail": {
+        "username": "example@bbcclive.com",
+        "password": "abcdefghijklmnop",
+        "host": "smtp.bbcclive.com",
+        "port": "25",
+        "from": "BBCC DDNS\u003cexample@bbcclive.com\u003e",
+        "to": [
+            "to@bbcclive.com"
+        ],
+        "subject": "DDNS update notification",
+        "content": "Update DNS Record",
+        "duration": 3000000000
+    },
     "duration": 3000000000
 }
 ```
