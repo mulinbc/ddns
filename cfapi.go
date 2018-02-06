@@ -32,6 +32,7 @@ type ddns struct {
 	GetIP     getIP         `json:"get_ip"`
 	Secret    secret        `json:"secret"`
 	DNSRecord []dnsRecord   `json:"dns_record"`
+	Mail      mail          `json:"mail"`
 	Duration  time.Duration `json:"duration"`
 }
 
