@@ -47,4 +47,5 @@ func (p *mail) sendEmail() {
 			time.Sleep(p.Duration)
 		}
 	}
+	log.Println("Send email content: " + p.Content)
 }

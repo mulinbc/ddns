@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"strconv"
 )
 
 const confFilePath = "conf/conf.json"
@@ -29,11 +30,11 @@ func main() {
 		newIP = <-ipChan
 		if newIP != oldIP {
 			//Update DNS record
-			ddns.updateDNSRecord(newIP)
+			go ddns.updateDNSRecord(newIP)
 			//Send email
 			ddns.Mail.Content = "DNS record has been updated:\r\n"
-			for _, u := range ddns.DNSRecord {
-				ddns.Mail.Content += u.Name + ": " + newIP + "\r\n"
+			for i, u := range ddns.DNSRecord {
+				ddns.Mail.Content += strconv.Itoa(i+1) + ". " + u.Name + ": " + newIP + "\r\n"
 			}
 			go ddns.Mail.sendEmail()
 
